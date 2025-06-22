@@ -73,7 +73,7 @@ namespace UI.Effects
             _material.SetTexture(WaveformTex, grayscaleTexture);
         }
 
-        private void SetWaveformCount(int barsCount) => _material.SetInteger(WaveformNum, Mathf.Max(1, barsCount));
+        private void SetWaveformCount(int barsCount) => _material.SetFloat(WaveformNum, Mathf.Max(1f, barsCount));
         public void SetProgress(float progress01) => _material.SetFloat(Progress, Mathf.Clamp01(progress01));
         public void SetFilledColor(Color color) => _material.SetColor(FilledColor, color);
         public void SetUnfilledColor(Color color) => _material.SetColor(UnfilledColor, color);
