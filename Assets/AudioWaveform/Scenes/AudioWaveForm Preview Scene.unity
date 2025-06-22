@@ -119,6 +119,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!28 &644846146
+Texture2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 4
+  m_Width: 64
+  m_Height: 1
+  m_CompleteImageSize: 256
+  m_MipsStripped: 0
+  m_TextureFormat: 18
+  m_MipCount: 1
+  m_IsReadable: 1
+  m_IsPreProcessed: 0
+  m_IgnoreMipmapLimit: 1
+  m_MipmapLimitGroupName: 
+  m_StreamingMipmaps: 0
+  m_StreamingMipmapsPriority: 0
+  m_VTOnly: 0
+  m_AlphaIsTransparency: 0
+  m_ImageCount: 1
+  m_TextureDimension: 2
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_LightmapFormat: 0
+  m_ColorSpace: 1
+  m_PlatformBlob: 
+  image data: 256
+  _typelessdata: 8a729a3c1a6ad43ce2ed1b3ea17a083e8349203ed235073e5bd6a43d37ffed3bfd3d743ac2ed9e3a8356913a54c6b33a5736a33a53ea063ceb220e3cdb32433c8dabe13b7668aa3bcead5b3b446dff3a1a2e513a2e86103a8f91e2390afed139dc7ea63d3469073e93492e3e2c9a113e40a4e03d7e576a3c86c6373c4ac8013cc9451c3c868b5a3c953a803c5280913cf5406c3d58e1213ef519053df71d093dc245073e7833c93d65d5593d897ea33d6928553b6452c03ac534043b7e80c13a9cffbd3a5056e63a2222fc3a51b2223bf9c3363b5cba423bf235f93b2970aa3c911cfe3cb41aaf3c1b26013c2483af3bd8ab453bcb3deb3a06328b3a8019463a
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &869781948
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _visualizer: {fileID: 869781952}
   _audioClip: {fileID: 8300000, guid: 4ee9973e25256a346b6e10822deed1b1, type: 3}
-  _fillTest: 0.4
+  _fillTest: 0.448
 --- !u!114 &869781951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,10 +258,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad44976502a40904996493d13df81b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <WaveFormsImage>k__BackingField: {fileID: 869781951}
-  <SharedWaveFormsMaterial>k__BackingField: {fileID: 2100000, guid: 25debd59d607b1e469faaffe69ee9b12, type: 2}
-  <BarScaleFactor>k__BackingField: 1
-  <BarCountPower>k__BackingField: 6
+  _waveFormsImage: {fileID: 869781951}
+  _sharedWaveFormsMaterial: {fileID: 2100000, guid: 25debd59d607b1e469faaffe69ee9b12, type: 2}
+  _barScaleFactor: 1
+  _barCountPower: 6
 --- !u!222 &869781953
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -224,52 +270,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869781948}
   m_CullTransparentMesh: 1
---- !u!28 &1200555348
-Texture2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 4
-  m_Width: 64
-  m_Height: 1
-  m_CompleteImageSize: 256
-  m_MipsStripped: 0
-  m_TextureFormat: 18
-  m_MipCount: 1
-  m_IsReadable: 1
-  m_IsPreProcessed: 0
-  m_IgnoreMipmapLimit: 1
-  m_MipmapLimitGroupName: 
-  m_StreamingMipmaps: 0
-  m_StreamingMipmapsPriority: 0
-  m_VTOnly: 0
-  m_AlphaIsTransparency: 0
-  m_ImageCount: 1
-  m_TextureDimension: 2
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_LightmapFormat: 0
-  m_ColorSpace: 1
-  m_PlatformBlob: 
-  image data: 256
-  _typelessdata: 8a729a3c1a6ad43ce2ed1b3ea17a083e8349203ed235073e5bd6a43d37ffed3bfd3d743ac2ed9e3a8356913a54c6b33a5736a33a53ea063ceb220e3cdb32433c8dabe13b7668aa3bcead5b3b446dff3a1a2e513a2e86103a8f91e2390afed139dc7ea63d3469073e93492e3e2c9a113e40a4e03d7e576a3c86c6373c4ac8013cc9451c3c868b5a3c953a803c5280913cf5406c3d58e1213ef519053df71d093dc245073e7833c93d65d5593d897ea33d6928553b6452c03ac534043b7e80c13a9cffbd3a5056e63a2222fc3a51b2223bf9c3363b5cba423bf235f93b2970aa3c911cfe3cb41aaf3c1b26013c2483af3bd8ab453bcb3deb3a06328b3a8019463a
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 
 --- !u!1 &1862659941
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +400,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WaveformTex:
-        m_Texture: {fileID: 1200555348}
+        m_Texture: {fileID: 644846146}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints:
@@ -409,13 +409,14 @@ Material:
     - _ColorMask: 15
     - _MaxSampleHeight: 0.95
     - _MinSampleHeight: 0.0025
-    - _Progress: 0.672
+    - _Progress: 0.448
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
+    - _WaveformNum: 64
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _FilledColor: {r: 0.1348896, g: 1, b: 0.0990566, a: 1}

@@ -5,7 +5,7 @@ Shader "Custom/UI/Unlit/AudioWaveformShader"
         [PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
 
         _WaveformTex("Waveform Texture", 2D) = "white" {}
-        _WaveformNum("Waveform Number", Integer) = 64
+        _WaveformNum("Waveform Number", Float) = 64
         _Progress("Progress", Range(0,1)) = 0.0
 
         _FilledColor ("Filled Color", Color) = (0.1, 0.8, 0.2, 1.0)
@@ -87,7 +87,7 @@ Shader "Custom/UI/Unlit/AudioWaveformShader"
 
             fixed4 _UnfilledColor, _FilledColor;
             float _Progress;
-            int _WaveformNum;
+            float _WaveformNum;
 
             float _MinSampleHeight;
             float _MaxSampleHeight;
@@ -107,32 +107,17 @@ Shader "Custom/UI/Unlit/AudioWaveformShader"
                 return o;
             }
 
-            inline fixed4 capsule(float2 uv, float2 position, float2 size)
+            inline fixed4 capsule(in const float2 uv, in const float2 position, in const float2 size)
             {
-                float2 halfSize = size / 2;
-                float radius = halfSize.x;
+                float2 halfSize = size / 2.0;
+                float2 delta = abs(uv - position);
+                float insideBox = step(delta.x, halfSize.x) * step(delta.y, halfSize.y);
+                float2 bottom = float2(position.x, position.y - halfSize.y);
+                float2 top = float2(position.x, position.y + halfSize.y);
+                float inCaps = step(distance(uv, bottom), halfSize.x) + step(distance(uv, top), halfSize.x);
 
-                if (uv.x >= position.x - radius &&
-                    uv.x <= position.x + radius &&
-                    uv.y >= position.y - halfSize.y &&
-                    uv.y <= position.y + halfSize.y)
-                {
-                    return fixed4(1, 1, 1, 1);
-                }
-
-                float2 bottomCenter = position + float2(0, -halfSize.y);
-                if (distance(uv, bottomCenter) <= radius)
-                {
-                    return fixed4(1, 1, 1, 1);
-                }
-
-                float2 topCenter = position + float2(0, halfSize.y);
-                if (distance(uv, topCenter) <= radius)
-                {
-                    return fixed4(1, 1, 1, 1);
-                }
-
-                return fixed4(0, 0, 0, 0);
+                float alpha = saturate(insideBox + inCaps);
+                return fixed4(1, 1, 1, alpha);
             }
 
             fixed4 frag(v2f i) : SV_Target
@@ -156,7 +141,7 @@ Shader "Custom/UI/Unlit/AudioWaveformShader"
                 float capsuleIndex = round(x * (num + 1.0) - 1.0); // rounds to nearest capsule
                 capsuleIndex = clamp(capsuleIndex, 0.0, num - 1.0); // ensure within bounds
 
-                if (capsuleIndex / float(_WaveformNum) < _Progress)
+                if (capsuleIndex / _WaveformNum < _Progress)
                 {
                     color.rgb = _FilledColor.rgb;
                 }
@@ -168,9 +153,9 @@ Shader "Custom/UI/Unlit/AudioWaveformShader"
                 float height = lerp(_MinSampleHeight, _MaxSampleHeight, sample);
                 float2 capsuleSize = float2(sizeX, height);
 
-                fixed4 result = color * capsule(i.texcoord, capsulePos, capsuleSize);
+                fixed4 mask = capsule(i.texcoord, capsulePos, capsuleSize);
 
-                return color * result;
+                return color * mask;
             }
             ENDCG
         }
